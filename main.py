@@ -195,8 +195,6 @@ def alpha_jensen_portefeuille_optimal(rentabilité_moyenne_portefeuille,medaf_p)
 
 
 
-
-
 df =télécharger_et_afficher_les_données(P)
 rendements =calculer_les_rendements_mensuels(df)
 moyennes,volatilités =calculer_les_moyennes_et_volatilités(rendements)
@@ -214,15 +212,16 @@ print('=========== PORTEFEUILLE OPTIMAL :========\n')
 portefeuille_optimal = simulations.loc[simulations["Sharpe"].idxmax()]
 print(portefeuille_optimal)
 
+
+# Téléchargement du fichier excel contenant le portefeuille optimal
+portefeuille_optimal.to_excel('Portefeuille optimal.xlsx')
+
+
+
 rentabilté_moyenne_portefeuille ,volatilité_moyenne_portefeuille = stats_du_portefeuille_optimal(portefeuille_optimal)
 rendement_portefeuille_historique = calculer_rendement_portefeuille_historique(rendements,portefeuille_optimal)
 beta_p , medaf_p = beta_et_medaf_portefeuille_optimal(BETA, portefeuille_optimal, Rm, rf)
 alpha_jensen_p = alpha_jensen_portefeuille_optimal(rentabilté_moyenne_portefeuille, medaf_p)
-
-
-
-
-
 
 
 
